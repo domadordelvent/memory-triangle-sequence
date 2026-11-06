@@ -2,6 +2,8 @@
 
 A visual memory game with triangle sequences and a quick arithmetic challenge, built with **Godot 4** and **GDScript**. Memorize the colors, solve an addition problem, and pick the original sequence.
 
+![Memory Triangle Sequence gameplay](docs/screenshot.png)
+
 ## Main Features
 
 - Randomized triangle sequences using yellow, blue, and red, drawn directly in Godot.
