@@ -1,0 +1,24 @@
+config_version=5
+
+[application]
+config/name="Memory Triangle Sequence"
+run/main_scene="res://triangles.tscn"
+config/features=PackedStringArray("4.0", "GL Compatibility")
+
+[autoload]
+Flow="*res://flow.gd"
+FeedbackAudio="*res://feedback_audio.gd"
+
+[display]
+window/size/viewport_width=720
+window/size/viewport_height=720
+window/size/window_width_override=720
+window/size/window_height_override=720
+window/size/resizable=true
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.12, 0.17, 0.21, 1)

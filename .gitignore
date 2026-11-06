@@ -1,0 +1,26 @@
+# Godot 4 generated caches and imported translations
+.godot/
+*.translation
+
+# Generated export/build output
+/android/
+/build/
+/dist/
+/export/
+/exports/
+*.pck
+*.apk
+*.aab
+
+# Local demonstration recordings (the README links to YouTube)
+/video/
+
+# Local editor settings, operating-system metadata, and temporary files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*~

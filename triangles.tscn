@@ -1,0 +1,215 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://triangles.gd" id="1"]
+[ext_resource type="Script" path="res://triangle_strip.gd" id="2"]
+
+[ext_resource type="Script" path="res://mute_button.gd" id="3"]
+
+[node name="Triangles" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.17, 0.21, 1)
+mouse_filter = 2
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Center"]
+custom_minimum_size = Vector2(560, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Center/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Memory Triangle Sequence"
+horizontal_alignment = 1
+
+[node name="Round" type="Label" parent="Center/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.61, 0.71, 0.79, 1)
+text = "MEMORY + MENTAL ARITHMETIC"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Center/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Remember the colors. Solve a sum. Recall the order."
+horizontal_alignment = 1
+
+[node name="Memory" type="Control" parent="Center/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(560, 180)
+layout_mode = 2
+script = ExtResource("2")
+
+[node name="Choices" type="GridContainer" parent="Center/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="Feedback" type="Label" parent="Center/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(560, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.70, 0.78, 0.84, 1)
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoresPanel" type="PanelContainer" parent="Center/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Leaderboard" type="VBoxContainer" parent="Center/Content/HighScoresPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Heading" type="Label" parent="Center/Content/HighScoresPanel/Leaderboard"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "TOP 3 HIGH SCORES"
+horizontal_alignment = 1
+
+[node name="LeaderboardRows" type="GridContainer" parent="Center/Content/HighScoresPanel/Leaderboard"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="Name0" type="Label" parent="Center/Content/HighScoresPanel/Leaderboard/LeaderboardRows"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1. —"
+text_overrun_behavior = 3
+
+[node name="Points0" type="Label" parent="Center/Content/HighScoresPanel/Leaderboard/LeaderboardRows"]
+layout_mode = 2
+text = "—"
+horizontal_alignment = 2
+
+[node name="Name1" type="Label" parent="Center/Content/HighScoresPanel/Leaderboard/LeaderboardRows"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2. —"
+text_overrun_behavior = 3
+
+[node name="Points1" type="Label" parent="Center/Content/HighScoresPanel/Leaderboard/LeaderboardRows"]
+layout_mode = 2
+text = "—"
+horizontal_alignment = 2
+
+[node name="Name2" type="Label" parent="Center/Content/HighScoresPanel/Leaderboard/LeaderboardRows"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3. —"
+text_overrun_behavior = 3
+
+[node name="Points2" type="Label" parent="Center/Content/HighScoresPanel/Leaderboard/LeaderboardRows"]
+layout_mode = 2
+text = "—"
+horizontal_alignment = 2
+
+[node name="Start" type="Button" parent="Center/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Game"
+
+[node name="MemoryTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="NextRoundTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="FinishGame" type="Button" parent="Center/Content"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "Finish Game"
+
+[node name="NameDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "New Top 3 High Score"
+size = Vector2i(420, 220)
+exclusive = true
+dialog_hide_on_ok = false
+ok_button_text = "Save Score"
+cancel_button_text = "Skip"
+
+[node name="Form" type="VBoxContainer" parent="NameDialog"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 408.0
+offset_bottom = 160.0
+theme_override_constants/separation = 12
+
+[node name="NamePrompt" type="Label" parent="NameDialog/Form"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+text = "Enter your name:"
+autowrap_mode = 2
+
+[node name="PlayerName" type="LineEdit" parent="NameDialog/Form"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+placeholder_text = "Player"
+max_length = 24
+
+[node name="NameError" type="Label" parent="NameDialog/Form"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.95, 0.61, 0.67, 1)
+autowrap_mode = 2
+
+[node name="Mute" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 52.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 16
+toggle_mode = true
+text = "Mute"
+script = ExtResource("3")
